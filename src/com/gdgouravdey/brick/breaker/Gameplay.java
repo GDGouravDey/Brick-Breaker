@@ -11,8 +11,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private boolean play = false;
     private int score= 0;
     private  int totalBricks = 21;
-    private Timer timer;
-    private int delay = 0;
+    private final Timer timer;
     private int playerX = 310;
     private int ballPosX = 120;
     private int ballPosY = 350;
@@ -25,6 +24,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
+        int delay = 0;
         timer = new Timer(delay,this);
         timer.start();
     }
@@ -91,12 +91,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
                         Rectangle rect = new Rectangle(brickX,brickY,bricksWidth,bricksHeight);
                         Rectangle ballRect = new Rectangle(ballPosX,ballPosY,20,20);
-                        Rectangle brickRect = rect;
-                        if(ballRect.intersects(brickRect)) {
+                        if(ballRect.intersects(rect)) {
                             map.setBrickValue(0,i,j);
                             totalBricks--;
-                            score+=5;
-                            if(ballPosX+19 <= brickRect.x || ballPosX+1 >= brickRect.x+bricksWidth) {
+                            score+=1;
+                            if(ballPosX+19 <= rect.x || ballPosX+1 >= rect.x+bricksWidth) {
                                 ballXDir = -ballXDir;
                             }
                             else {
