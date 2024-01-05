@@ -21,7 +21,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private MapGenerator map;
 
     public Gameplay() {
-        map = new MapGenerator(ballPosX,ballPosY);
+        map = new MapGenerator(3,7);
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
@@ -129,7 +129,35 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        throw new UnsupportedOperationException("Not Supported yet.");
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            if(playerX >= 580) {
+                playerX=580;
+            }
+            else {
+                moveRight();
+            }
+        }
+        if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+            if(playerX <= 10) {
+                playerX=10;
+            }
+            else {
+                moveLeft();
+            }
+        }
+        if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+            if(!play) {
+                ballPosX = 120;
+                ballPosY = 350;
+                ballXDir = -1;
+                ballYDir = -2;
+                score = 0;
+                playerX = 310;
+                totalBricks = 21;
+                map = new MapGenerator(3,7);
+                repaint();
+            }
+        }
     }
 
     @Override
@@ -139,11 +167,17 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     public void moveRight() {
         play = true;
-        playerX += 20;
+        for(int i=0;i<40;i++) {
+            playerX += 2;
+            repaint();
+        }
     }
 
     public void moveLeft() {
         play = true;
-        playerX -= 20;
+        for(int i=0;i<40;i++) {
+            playerX -= 2;
+            repaint();
+        }
     }
 }

@@ -11,6 +11,6 @@ public class MainClass {
         obj.setResizable(false);
         obj.setVisible(true);
         obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        obj.add(gameplay);
+        obj.add(gameplay);
     }
 }
