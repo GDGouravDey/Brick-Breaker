@@ -58,12 +58,68 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             g.setFont(new Font("serif",Font.BOLD,30));
             g.drawString("Press Enter to Restart ",190,340);
         }
+        if(totalBricks == 0) {
+            play = false;
+            ballYDir = -2;
+            ballXDir = -1;
+            g.setColor(Color.RED);
+            g.setFont(new Font("serif",Font.BOLD,30));
+            g.setFont(new Font("serif",Font.BOLD,30));
+            g.drawString("Game Over! Score: "+score,190,300);
 
+            g.setFont(new Font("serif",Font.BOLD,30));
+            g.drawString("Press Enter to Restart ",190,340);
+        }
+        g.dispose();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not Supported yet.");
+        timer.start();
+        if(play) {
+            if(new Rectangle(ballPosX,ballPosY,20,20).intersects(new Rectangle(playerX,550,100,8))) {
+                ballYDir = -ballYDir;
+            }
+            outer:
+            for(int i=0;i<map.map.length;i++) {
+                for(int j=0;j<map.map[0].length;j++) {
+                    if(map.map[i][j]>0) {
+                        int brickX = j*map.brickWidth + 80;
+                        int brickY = i*map.brickHeight + 50;
+                        int bricksWidth = map.brickWidth;
+                        int bricksHeight = map.brickHeight;
+
+                        Rectangle rect = new Rectangle(brickX,brickY,bricksWidth,bricksHeight);
+                        Rectangle ballRect = new Rectangle(ballPosX,ballPosY,20,20);
+                        Rectangle brickRect = rect;
+                        if(ballRect.intersects(brickRect)) {
+                            map.setBrickValue(0,i,j);
+                            totalBricks--;
+                            score+=5;
+                            if(ballPosX+19 <= brickRect.x || ballPosX+1 >= brickRect.x+bricksWidth) {
+                                ballXDir = -ballXDir;
+                            }
+                            else {
+                                ballYDir = -ballYDir;
+                            }
+                            break outer;
+                        }
+                    }
+                }
+            }
+            ballPosX += ballXDir;
+            ballPosY += ballYDir;
+            if(ballPosX<0) {
+                ballXDir = -ballXDir;
+            }
+            if(ballPosY<0) {
+                ballYDir = -ballYDir;
+            }
+            if(ballPosX>670) {
+                ballXDir = -ballXDir;
+            }
+        }
+        repaint();
     }
 
     @Override
