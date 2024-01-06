@@ -8,6 +8,6 @@ A fun and simple Brick Breaker Game in the form of a Desktop Application impleme
 3. Navigate to the Project Directory
 4. Run the file 'MainClass.java' to play and enjoy the Brick Breaker Game.
 ## Controls
-Left Arrow Key: Move paddle to the Left
-Right Arrow Key: Move paddle to the Right
-Enter Key: Start the Game or Play Again after the Game is Over
+- **Left Arrow Key:** Move paddle to the Left
+- **Right Arrow Key:** Move paddle to the Right
+- **Enter Key:** Start the Game or Play Again after the Game is Over
