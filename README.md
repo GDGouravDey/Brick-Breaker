@@ -4,10 +4,10 @@ A fun and simple Brick Breaker Game in the form of a Desktop Application impleme
 1. Ensure you have Java installed on your machine.
 2. Clone this repository to your local machine.
  
-    ``` git clone https://github.com/GDGouravDey/Brick-Breaker.git ```
+    ` git clone https://github.com/GDGouravDey/Brick-Breaker.git `
 3. Navigate to the Project Directory
 4. Run the file 'MainClass.java' to play and enjoy the Brick Breaker Game.
 ## Controls
-- **Left Arrow Key:** Move paddle to the Left
-- **Right Arrow Key:** Move paddle to the Right
-- **Enter Key:** Start the Game or Play Again after the Game is Over
+- **Left Arrow Key:** `Move paddle to the Left`
+- **Right Arrow Key:** `Move paddle to the Right`
+- **Enter Key:** `Start the Game or Play Again after the Game is Over`
