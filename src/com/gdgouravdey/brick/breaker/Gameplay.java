@@ -15,7 +15,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private final Timer timer;
     private int playerX = 310;
     private int ballPosX = ThreadLocalRandom.current().nextInt(100, 400 + 1);
-    private int ballPosY = 350;
+    private int ballPosY = ThreadLocalRandom.current().nextInt(300, 450 + 1);
     private int ballXDir = Math.random()>0.5?1:-1;
     private int ballYDir = -2;
     private MapGenerator map;
@@ -147,7 +147,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         if(e.getKeyCode() == KeyEvent.VK_ENTER) {
             if(!play) {
                 ballPosX = ThreadLocalRandom.current().nextInt(100, 400 + 1);
-                ballPosY = 350;
+                ballPosY = ThreadLocalRandom.current().nextInt(300, 450 + 1);
                 ballXDir = Math.random()>0.5?1:-1;
                 ballYDir = -2;
                 score = 0;
