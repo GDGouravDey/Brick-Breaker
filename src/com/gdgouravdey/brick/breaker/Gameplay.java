@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private boolean play = false;
@@ -13,9 +14,9 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private  int totalBricks = 21;
     private final Timer timer;
     private int playerX = 310;
-    private int ballPosX = 120;
+    private int ballPosX = ThreadLocalRandom.current().nextInt(100, 400 + 1);
     private int ballPosY = 350;
-    private int ballXDir = -1;
+    private int ballXDir = Math.random()>0.5?1:-1;
     private int ballYDir = -2;
     private MapGenerator map;
 
@@ -47,7 +48,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         g.setColor(Color.GREEN);
         g.fillOval(ballPosX,ballPosY,15,15);
 
-        if(ballPosY>570) {
+        if(ballPosY>=543) {
             play=false;
             ballPosX=0;
             ballYDir=0;
@@ -61,7 +62,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         if(totalBricks == 0) {
             play = false;
             ballYDir = -2;
-            ballXDir = -1;
+            ballXDir = Math.random()>0.5?1:-1;
             g.setColor(Color.RED);
             g.setFont(new Font("Verdana",Font.BOLD,30));
             g.drawString("Game Over! Score: "+score,190,300);
@@ -145,9 +146,9 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         }
         if(e.getKeyCode() == KeyEvent.VK_ENTER) {
             if(!play) {
-                ballPosX = 120;
+                ballPosX = ThreadLocalRandom.current().nextInt(100, 400 + 1);
                 ballPosY = 350;
-                ballXDir = -1;
+                ballXDir = Math.random()>0.5?1:-1;
                 ballYDir = -2;
                 score = 0;
                 playerX = 310;
