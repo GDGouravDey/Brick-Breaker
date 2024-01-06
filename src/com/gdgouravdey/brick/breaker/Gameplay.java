@@ -45,7 +45,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         g.fillRect(playerX,550,80,8);
 
         g.setColor(Color.GREEN);
-        g.fillOval(ballPosX,ballPosY,20,20);
+        g.fillOval(ballPosX,ballPosY,15,15);
 
         if(ballPosY>570) {
             play=false;
@@ -128,15 +128,15 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            if(playerX >= 590) {
-                playerX=590;
+            if(playerX >= 520) {
+                playerX=600;
             }
             else {
                 moveRight();
             }
         }
         if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-            if(playerX <= 10) {
+            if(playerX <= 90) {
                 playerX=10;
             }
             else {
