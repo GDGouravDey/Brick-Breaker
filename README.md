@@ -10,4 +10,4 @@ A fun and simple Brick Breaker Game in the form of a Desktop Application impleme
 ## Controls
 - **Left Arrow Key:** `Move paddle to the Left`
 - **Right Arrow Key:** `Move paddle to the Right`
-- **Enter Key:** `Start the Game or Play Again after the Game is Over`
+- **Enter Key:** `Play Again after the Game is Over`
