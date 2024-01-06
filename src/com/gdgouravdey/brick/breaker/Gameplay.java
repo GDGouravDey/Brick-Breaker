@@ -38,11 +38,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         g.fillRect(691,0,3,592);
 
         g.setColor(Color.WHITE);
-        g.setFont(new Font("serif",Font.BOLD,25));
+        g.setFont(new Font("Verdana",Font.BOLD,25));
         g.drawString(""+score,590,30);
 
         g.setColor(Color.YELLOW);
-        g.fillRect(playerX,550,100,8);
+        g.fillRect(playerX,550,80,8);
 
         g.setColor(Color.GREEN);
         g.fillOval(ballPosX,ballPosY,20,20);
@@ -52,10 +52,10 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             ballPosX=0;
             ballYDir=0;
             g.setColor(Color.RED);
-            g.setFont(new Font("serif",Font.BOLD,30));
+            g.setFont(new Font("Verdana",Font.BOLD,30));
             g.drawString("Game Over! Score: "+score,190,300);
 
-            g.setFont(new Font("serif",Font.BOLD,30));
+            g.setFont(new Font("Verdana",Font.BOLD,30));
             g.drawString("Press Enter to Restart ",190,340);
         }
         if(totalBricks == 0) {
@@ -63,11 +63,10 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             ballYDir = -2;
             ballXDir = -1;
             g.setColor(Color.RED);
-            g.setFont(new Font("serif",Font.BOLD,30));
-            g.setFont(new Font("serif",Font.BOLD,30));
+            g.setFont(new Font("Verdana",Font.BOLD,30));
             g.drawString("Game Over! Score: "+score,190,300);
 
-            g.setFont(new Font("serif",Font.BOLD,30));
+            g.setFont(new Font("Verdana",Font.BOLD,30));
             g.drawString("Press Enter to Restart ",190,340);
         }
         g.dispose();
@@ -94,7 +93,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                         if(ballRect.intersects(rect)) {
                             map.setBrickValue(0,i,j);
                             totalBricks--;
-                            score+=1;
+                            score+=5;
                             if(ballPosX+19 <= rect.x || ballPosX+1 >= rect.x+bricksWidth) {
                                 ballXDir = -ballXDir;
                             }
@@ -129,8 +128,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            if(playerX >= 580) {
-                playerX=580;
+            if(playerX >= 590) {
+                playerX=590;
             }
             else {
                 moveRight();
